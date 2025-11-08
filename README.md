@@ -12,6 +12,10 @@ A FastAPI-based backend service for AI-powered image search using CLIP (Contrast
 - 🏢 **Multi-Tenant**: Support for multiple collections via environment configuration
 - 🚀 **No Authentication**: Simplified setup for local development and testing
 
+## 🎥 Demo Video
+
+Watch the application in action: [View Demo Video](https://drive.google.com/file/d/1_ghjYO36mMtsXF1-NujjHAHUoGIXN5l8/view?usp=sharing)
+
 ## Tech Stack
 
 - **Framework**: FastAPI (Python web framework)
