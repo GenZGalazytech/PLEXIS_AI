@@ -1,4 +1,4 @@
-# Image Search API - FastAPI Server
+# Image intelligence - FastAPI Server
 
 A FastAPI-based backend service for AI-powered image search using CLIP (Contrastive Language-Image Pre-Training) embeddings. This service allows users to upload images and search them using natural language queries with semantic understanding.
 
