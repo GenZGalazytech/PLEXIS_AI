@@ -1,0 +1,13 @@
+git+https://github.com/openai/CLIP.git
+python-jose
+fastapi
+uvicorn
+pymongo
+python-dotenv
+boto3
+python-multipart
+faiss-cpu
+numpy
+sentence-transformers
+Pillow
+jinja2

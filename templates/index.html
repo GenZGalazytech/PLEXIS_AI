@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Search Demo - Plexis</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🖼️ Image Search Demo</h1>
+            <p class="subtitle">Powered by CLIP AI - Upload images and search with text queries</p>
+        </header>
+
+        <!-- Authentication Section (removed) -->
+        <div class="auth-section" id="authSection" style="display: none;">
+            <div class="auth-card">
+                <h2>Authentication Required</h2>
+                <p>Please provide your JWT token to access the demo</p>
+                <div class="input-group">
+                    <label for="jwtToken">JWT Token:</label>
+                    <input type="text" id="jwtToken" placeholder="Enter your JWT token" />
+                </div>
+                <button onclick="setAuthToken()" class="btn btn-primary">Authenticate</button>
+                <div id="authError" class="error-message"></div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content" id="mainContent" style="display: block;">
+            
+            <!-- Image Upload Section -->
+            <section class="card upload-section">
+                <h2>📤 Upload Images</h2>
+                <div class="upload-form">
+                    <div class="input-group">
+                        <label for="eventName">Event Name:</label>
+                        <input type="text" id="eventName" placeholder="e.g., Wedding 2024" required />
+                    </div>
+                    <div class="input-group">
+                        <label for="eventDate">Event Date:</label>
+                        <input type="date" id="eventDate" required />
+                    </div>
+                    <div class="input-group">
+                        <label for="folderName">Folder Name (optional):</label>
+                        <input type="text" id="folderName" placeholder="e.g., Reception" />
+                    </div>
+                    <div class="input-group">
+                        <label for="imageFiles">Select Images:</label>
+                        <input type="file" id="imageFiles" multiple accept="image/*" />
+                        <div id="fileList" class="file-list"></div>
+                    </div>
+                    <button onclick="uploadImages()" class="btn btn-primary" id="uploadBtn">
+                        <span id="uploadBtnText">Upload Images</span>
+                        <span id="uploadSpinner" class="spinner" style="display: none;"></span>
+                    </button>
+                    <div id="uploadResult" class="result-message"></div>
+                </div>
+            </section>
+
+            <!-- Chat Interface Section (shown after upload) -->
+            <section class="card chat-section" id="chatSection" style="display: none;">
+                <div class="chat-header">
+                    <h2>💬 Chat with Your Images</h2>
+                    <div class="chat-event-info">
+                        <span id="chatEventName" class="event-badge"></span>
+                        <button onclick="closeChat()" class="btn-close" title="Close Chat">×</button>
+                    </div>
+                </div>
+                <div class="chat-container">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="chat-welcome">
+                            <div class="welcome-icon">👋</div>
+                            <p>Hello! I can help you search through your uploaded images.</p>
+                            <p class="welcome-subtitle">Try asking me questions like:</p>
+                            <ul class="example-queries">
+                                <li>"Show me images with people smiling"</li>
+                                <li>"Find wedding cake photos"</li>
+                                <li>"Show dancing photos"</li>
+                                <li>"Find images with the bride"</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="chat-input-container">
+                        <div class="chat-input-wrapper">
+                            <input 
+                                type="text" 
+                                id="chatInput" 
+                                class="chat-input" 
+                                placeholder="Ask me about your images..." 
+                                autocomplete="off"
+                            />
+                            <button onclick="sendChatMessage()" class="btn btn-primary chat-send-btn" id="chatSendBtn">
+                                <span id="chatSendBtnText">Send</span>
+                                <span id="chatSpinner" class="spinner" style="display: none;"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Legacy Search Section (hidden by default, can be toggled) -->
+            <section class="card search-section" id="legacySearchSection" style="display: none;">
+                <h2>🔍 Search Images (Legacy)</h2>
+                <div class="search-form">
+                    <div class="input-group">
+                        <label for="searchEventName">Event Name:</label>
+                        <input type="text" id="searchEventName" placeholder="e.g., Wedding 2024" required />
+                    </div>
+                    <div class="input-group">
+                        <label for="searchQuery">Search Query:</label>
+                        <input type="text" id="searchQuery" placeholder="e.g., bride smiling, wedding cake, dancing" required />
+                    </div>
+                    <button onclick="searchImages()" class="btn btn-secondary" id="searchBtn">
+                        <span id="searchBtnText">Search</span>
+                        <span id="searchSpinner" class="spinner" style="display: none;"></span>
+                    </button>
+                    <div id="searchResult" class="result-message"></div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
+
